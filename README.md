@@ -24,6 +24,8 @@ HTML5, CSS3, JavaScript ES Modules, Three.js, OrbitControls and Web Audio API.
 
 This repository is configured for GitHub Pages using GitHub Actions.
 
+Deployment refreshed after Pages activation.
+
 ## Credit
 
 Created by **Amir Saeid Dehghan**.
