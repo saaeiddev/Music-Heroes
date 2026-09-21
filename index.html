@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#050504" />
+  <meta name="description" content="Music Heroes — an interactive 3D instrument exhibition and learning experience." />
+  <title>MUSIC HEROES</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="Music Heroes home">
+        <span class="clef">𝄞</span><span class="brand-copy"><b>MUSIC</b><b>HEROES</b></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <button class="nav-link active" data-panel="home">Home</button>
+        <button class="nav-link" data-panel="instruments">Instruments</button>
+        <button class="nav-link" data-panel="heroes">Heroes</button>
+        <button class="nav-link" data-panel="about">About</button>
+        <button class="nav-link" data-panel="contact">Contact</button>
+      </nav>
+      <div class="top-actions">
+        <button class="icon-btn" id="searchBtn" aria-label="Search instruments">⌕</button>
+        <button class="icon-btn" id="soundToggle" aria-label="Toggle sound">🔊</button>
+        <button class="icon-btn" id="menuBtn" aria-label="Open menu">☰</button>
+      </div>
+    </header>
+
+    <main id="home" class="experience">
+      <aside class="rail rail-left" id="leftRail" aria-label="Instrument shortcuts"></aside>
+
+      <section class="stage-shell" aria-label="3D instrument exhibition">
+        <div class="arch-glow left"></div><div class="arch-glow right"></div>
+        <div class="slats left"></div><div class="slats right"></div>
+        <div class="title-block">
+          <h1 id="instrumentTitle">ELECTRIC GUITAR</h1>
+          <p id="instrumentDescription">The electric guitar is a string instrument that uses pickups to convert the vibration of its strings into electrical signals.</p>
+          <button id="familyPill" class="family-pill">STRING INSTRUMENT ›</button>
+        </div>
+
+        <div class="stage-content">
+          <div class="action-stack" aria-label="Instrument actions">
+            <button class="round-action" id="soundAction"><span>♪</span><small>Sound</small></button>
+            <button class="round-action" id="learnAction"><span>▤</span><small>Learn</small></button>
+            <button class="round-action" id="exploreAction"><span>360°</span><small>Explore</small></button>
+          </div>
+
+          <div class="viewer-wrap">
+            <canvas id="scene" aria-label="Interactive 3D instrument"></canvas>
+            <div id="loading" class="loading">Loading 3D instrument…</div>
+            <div id="webglFallback" class="fallback" hidden>
+              <strong>3D preview unavailable</strong><span>The educational content remains available.</span>
+            </div>
+            <div id="hotspots" class="hotspots" aria-hidden="true"></div>
+          </div>
+
+          <aside class="info-card" id="infoCard">
+            <div><span>Family</span><b id="metaFamily">Strings</b></div>
+            <div><span>Origin</span><b id="metaOrigin">USA, 1930s</b></div>
+            <div><span>Range</span><b id="metaRange">4+ Octaves</b></div>
+            <div><span>Difficulty</span><b id="metaDifficulty">★★★☆☆</b></div>
+          </aside>
+        </div>
+
+        <div class="pedestal-controls">
+          <button id="prevBtn" aria-label="Previous instrument">‹</button>
+          <button id="playBtn" class="play" aria-label="Play instrument demo">▶</button>
+          <button id="nextBtn" aria-label="Next instrument">›</button>
+          <p>Scroll or drag to explore</p>
+        </div>
+      </section>
+
+      <aside class="rail rail-right" id="rightRail" aria-label="Instrument shortcuts"></aside>
+    </main>
+
+    <nav class="family-nav" id="familyNav" aria-label="Instrument families"></nav>
+  </div>
+
+  <dialog id="panelDialog" class="panel-dialog">
+    <button class="dialog-close" id="dialogClose" aria-label="Close">×</button>
+    <div id="dialogContent"></div>
+  </dialog>
+
+  <dialog id="searchDialog" class="search-dialog">
+    <button class="dialog-close" id="searchClose" aria-label="Close">×</button>
+    <h2>Search instruments</h2>
+    <input id="searchInput" type="search" placeholder="Type an instrument name…" autocomplete="off" />
+    <div id="searchResults" class="search-results"></div>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script type="importmap">
+  {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}
+  </script>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
